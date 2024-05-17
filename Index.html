@@ -3,111 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comrade-Shoes</title>
+    <title>Welcome to ShoeTrade</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            position: relative;
-            padding-bottom: 70px; /* Adjusted padding for the footer and space for buttonsfcfcgcgfggfcfcg */
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h1 {
-            margin: 0;
-            font-weight: bold;
-            font-size: 24px;
-        }
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            text-align: center; /* Center the image and buttons */
-            padding-bottom: 60px; /* Adjusted padding for the buttons */
-        }
-        img {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .buttons {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-        }
-        .buttons button {
-            margin: 0 10px; /* Adjust the spacing between buttons */
-            padding: 15px 30px;
-            background: linear-gradient(to right, #ff6a00, #ee0979); /* Gradient background */
-            color: #fff;
-            border: none;
-            border-radius: 30px; /* Increased border radius for a rounded shape */
-            cursor: pointer;
-            transition: all 0.3s ease; /* Smooth transition for all properties */
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
-        }
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom, #43e97b, #38f9d7);
+}
 
-        .buttons button:hover {
-            transform: translateY(-2px); /* Move button up slightly on hover */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-        }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .buttons button:active {
-            transform: translateY(1px); /* Move button down slightly on click */
-            box-shadow: none; /* Remove shadow on click */
-        }
+.content {
+    text-align: center;
+    flex: 1;
+    animation: fadeIn 1s ease forwards;
+}
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #f0134d;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #f0134d;
+    border: none;
+    border-radius: 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fa7f72;
+}
+
+.info {
+    font-size: 1rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
     </style>
 </head>
 <body>
-    <script>welcome.js</script>
-    <header>
-        <h1>Comrade-Shoes: Hero's Shoe Trading Platform</h1>
-    </header>
     <div class="container">
-        <main>
-            <marquee behavior="scroll" direction="left"><h1> 😎Hero-tec Shoe trading platform NAIROBI-KENYA👌</h1></marquee>
-            <img src="/Shoe images/Shoe collection.webp" alt="Shoes">
-        </main>
-        <div class="buttons">
-            <button onclick="window.location.href='/Shoe-web/Mens.html'" class="button">Men</button>
-            <button onclick="window.location.href='/Shoe-web/ladies-shoes.html'" class="button">Ladies</button>
-            <button onclick="window.location.href='/Shoe-web/kids-collection.html'" class="button">KIds</button>
+        <div class="content">
+            <h1>Welcome to <span class="highlight">ShoeTrade</span></h1>
+            <p class="subtitle">Buy, Sell, or Trade Sneakers</p>
+            <div class="buttons">
+                <a href="/Shoe-web/" class="btn">Sign Up Now</a>
+                <a href="/Shoe-web/" class="btn">Sign In</a>
+            </div>
+            <p class="info">Discover a community passionate about sneakers.</p>
+        </div>
+        <div class="image-container">
+            <img src="shoes.jpg" alt="Shoes" class="shoes-image">
         </div>
     </div>
-    <footer>
-        <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
-    </footer>   
 </body>
-
 </html>
