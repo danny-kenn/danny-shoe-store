@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Verify Code</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -37,8 +37,7 @@
             text-align: left;
         }
 
-        input[type="text"],
-        input[type="password"] {
+        input[type="text"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -61,6 +60,11 @@
             background-color: #45a049;
         }
 
+        .message {
+            color: #333;
+            margin-top: 20px;
+        }
+
         .error-message {
             color: #f44336;
             margin-top: 10px;
@@ -69,20 +73,17 @@
 </head>
 <body>
     <div class="container">
-        <form id="loginForm" onsubmit="return validateLogin()">
-            <h2>Login</h2>
+        <form id="verifyCodeForm" onsubmit="return verifyCode()">
+            <h2>Verify Code</h2>
             <div class="input-group">
-                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="text" id="code" name="code" placeholder="Enter verification code" required>
             </div>
-            <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Password" required>
-            </div>
-            <button type="submit">Login</button>
+            <button type="submit">Verify</button>
+            <p id="message" class="message"></p>
             <p id="errorMessage" class="error-message"></p>
-            <p class="login">Forgot Password? <a href="forgot_password.html">Forgot Password?</a></p>
         </form>
     </div>
 
-    <script src="signin_database.js" defer></script>
+    <script src="verify_code.js" defer></script>
 </body>
 </html>
