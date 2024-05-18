@@ -1,34 +1,32 @@
-// Define predefined credentials
-const credentials = {
-    "admin": "admin123",
-    "user": "password123"
-};
+// Retrieve the signup information from localStorage
+let signUpDatabase = JSON.parse(localStorage.getItem('signUpDatabase')) || [];
 
-// Function to validate login and redirect to homepage
+// Function to validate login
 function validateLogin() {
     const usernameInput = document.getElementById("username").value;
     const passwordInput = document.getElementById("password").value;
 
-    // Check if the username exists in the credentials object
-    if (credentials.hasOwnProperty(usernameInput)) {
+    // Check if the username exists in the signUpDatabase
+    const existingUser = signUpDatabase.find(user => user.username === usernameInput);
+    if (existingUser) {
         // Check if the password matches
-        if (credentials[usernameInput] === passwordInput) {
-            // If credentials are correct, allow access
+        if (existingUser.password === passwordInput) {
             alert("Login successful! Redirecting to homepage...");
+            // Redirect to the home page after successful login
+            window.location.href = "home.html";
+            return false; // Prevent form submission
         } else {
-            alert("Incorrect password. Redirecting to homepage...");
+            displayLoginErrorMessage("Incorrect password. Please try again.");
+            return false;
         }
     } else {
-        alert("Username not found. Redirecting to homepage...");
+        displayLoginErrorMessage("Username not found. Please try again.");
+        return false;
     }
-
-    // Redirect the user to the homepage regardless of login status
-    window.location.href = "home.html";
-    return false; // Prevent form submission
 }
 
-// Function to display error message (if needed)
-function displayErrorMessage(message) {
+// Function to display login error message
+function displayLoginErrorMessage(message) {
     const errorMessageElement = document.getElementById("errorMessage");
     errorMessageElement.textContent = message;
 }

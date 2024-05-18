@@ -1,5 +1,5 @@
-// Define an array to store signup information
-let signUpDatabase = [];
+// Define an array to store signup information or retrieve it from localStorage
+let signUpDatabase = JSON.parse(localStorage.getItem('signUpDatabase')) || [];
 
 // Function to add a new signup entry
 function signUp(username, email, password) {
@@ -19,6 +19,8 @@ function signUp(username, email, password) {
 
     // Add the new entry to the database
     signUpDatabase.push(newEntry);
+    // Store the updated database in localStorage
+    localStorage.setItem('signUpDatabase', JSON.stringify(signUpDatabase));
     alert("Signed up successfully!");
     // Redirect to the home page after successful signup
     window.location.href = "home.html";
