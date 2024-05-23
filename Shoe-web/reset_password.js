@@ -1,27 +1,28 @@
 // Retrieve the signup information from localStorage
 let signUpDatabase = JSON.parse(localStorage.getItem('signUpDatabase')) || [];
 
-// Function to delete user account
-function deleteAccount() {
-    const usernameInput = document.getElementById("username").value;
-    const passwordInput = document.getElementById("password").value;
+// Function to reset password
+function resetPassword() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email');
+    const newPassword = document.getElementById("newPassword").value;
 
     // Find the user in signUpDatabase
-    const userIndex = signUpDatabase.findIndex(user => user.username === usernameInput);
+    const userIndex = signUpDatabase.findIndex(user => user.email === email);
 
-    if (userIndex !== -1 && signUpDatabase[userIndex].password === passwordInput) {
-        // Remove the user from signUpDatabase
-        signUpDatabase.splice(userIndex, 1);
+    if (userIndex !== -1) {
+        // Update the user's password
+        signUpDatabase[userIndex].password = newPassword;
 
         // Update localStorage for signUpDatabase
         localStorage.setItem('signUpDatabase', JSON.stringify(signUpDatabase));
 
-        alert("Account deleted successfully!");
+        alert("Password reset successful! Please login with your new password.");
         // Redirect to the login page or another appropriate page
-        window.location.href = "Index.html";
+        window.location.href = "login_webpage.html";
         return false; // Prevent form submission
     } else {
-        displayErrorMessage("Username or password incorrect. Account deletion failed.");
+        displayErrorMessage("User not found. Please try again.");
         return false;
     }
 }
