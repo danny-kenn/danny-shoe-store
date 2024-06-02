@@ -207,29 +207,29 @@
                 <p>Chief Marketing Officer</p>
             </div>
             <div class="team-member">
-                <img src="team3.jpg" alt="Team Member 3">
-                <h3>Michael Brown</h3>
+                <img src="/Shoe-web/meshack.jpg" alt="Team Member 3">
+                <h3>Meshack Odondi</h3>
                 <p>Head of Design</p>
             </div>
         </section>
     </div>
-    <footer>
+    <footer> 
         <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
     </footer>
 
     <script>
         // Background images array
         const images = [
-            'Shoe-web/mileview-img3.jpg',
-            'background2.jpg',
-            'background3.jpg'
+            '/Shoe-web/mileview-img3.jpg',
+            '/Shoe-web/David..jpg',
+            '/Shoe images/Leather 2.jpegShoe images/Leather 2.jpeg'
         ];
 
         // Function to change background image
         function changeBackground() {
             const randomIndex = Math.floor(Math.random() * images.length);
             const imageUrl = `url(${images[randomIndex]})`;
-            document.querySelector('.background-images').style.backgroundImage = imageUrl;
+            document.querySelector('.about-section').style.backgroundImage = imageUrl;
         }
 
         // Change background image every 5 seconds
