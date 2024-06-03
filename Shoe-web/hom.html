@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to ShoeTrade</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom, #43e97b, #38f9d7);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    text-align: center;
+    flex: 1;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #f0134d;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #f0134d;
+    border: none;
+    border-radius: 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fa7f72;
+}
+
+.info {
+    font-size: 1rem;
+    color: #fff;
+    opacity: 0.8;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Welcome to <span class="highlight">ShoeTrade</span></h1>
+            <p class="subtitle">Buy, Sell, or Trade Sneakers</p>
+            <div class="buttons">
+                <a href="/Shoe-web/signup_webpage.html" class="btn">Sign Up Now</a>
+                <a href="/Shoe-web/login_webpage.html" class="btn">Sign In</a>
+            </div>
+            <p class="info">Discover a community passionate about sneakers.</p>
+        </div>
+        <div class="image-container">
+            <img src="shoes.jpg" alt="Shoes" class="shoes-image">
+        </div>
+    </div>
+</body>
+</html>
