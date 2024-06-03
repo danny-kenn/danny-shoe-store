@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comrade-Shoes</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to right, #ff8a00, #e52e71);
+            color: #fff;
+            border-radius: 10px;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0 30px;
+        }
+        .hero img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .sections {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        .section {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .buttons button {
+            padding: 15px 30px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .buttons button:hover {
+            background-color: #388e3c;
+            transform: translateY(-3px);
+        }
+        .buttons button:active {
+            background-color: #2e7d32;
+            transform: translateY(1px);
+        }
+        .login {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1em;
+        }
+        .login a {
+            color: #e52e71;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comrade-Shoes</h1>
+    </header>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="home" class="hero">
+            <h2>Welcome to Hero-tec Shoe Trading Platform</h2>
+            <p>NAIROBI-KENYA</p>
+            <img src="/Shoe images/Shoe collection.webp" alt="Shoe Collection">
+        </section>
+        <div class="sections">
+            <div class="section">
+                <h3>Men's Collection</h3>
+                <p>Explore our exclusive collection of men's shoes.</p>
+                <div class="buttons">
+                    <button onclick="window.location.href='/Shoe-web/Mens.html'">Shop Men</button>
+                </div>
+            </div>
+            <div class="section">
+                <h3>Ladies' Collection</h3>
+                <p>Discover the latest trends in women's footwear.</p>
+                <div class="buttons">
+                    <button onclick="window.location.href='/Shoe-web/ladies-shoes.html'">Shop Ladies</button>
+                </div>
+            </div>
+            <div class="section">
+                <h3>Kids' Collection</h3>
+                <p>Find the perfect shoes for your little ones.</p>
+                <div class="buttons">
+                    <button onclick="window.location.href='/Shoe-web/kids-collection.html'">Shop Kids</button>
+                </div>
+            </div>
+        </div>
+        <div class="login">
+            Delete account? <a href="delete_myaccount.html">Click here!</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
+    </footer>
+</body>
+</html>
