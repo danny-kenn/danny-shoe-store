@@ -69,17 +69,19 @@
         }
         .sections {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
             margin-top: 40px;
         }
         .section {
             flex: 1;
-            margin: 0 10px;
+            margin: 10px;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
+            min-width: 250px;
         }
         .section h3 {
             font-size: 1.8em;
@@ -125,6 +127,52 @@
             text-align: center;
             padding: 15px 0;
             margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                margin: 10px 0;
+                font-size: 1em;
+            }
+            .hero h2 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .sections {
+                flex-direction: column;
+                align-items: center;
+            }
+            .section {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            nav a {
+                font-size: 0.9em;
+                margin: 5px 0;
+            }
+            .hero h2 {
+                font-size: 1.5em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+            .buttons button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
