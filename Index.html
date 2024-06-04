@@ -7,90 +7,139 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: linear-gradient(to right bottom, #43e97b, #38f9d7);
-}
+            font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to right bottom, #43e97b, #38f9d7);
+        }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
 
-.content {
-    text-align: center;
-    flex: 1;
-    animation: fadeIn 1s ease forwards;
-}
+        .content {
+            text-align: center;
+            flex: 1;
+            animation: fadeIn 1s ease forwards;
+            min-width: 300px;
+        }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-h1 {
-    font-size: 4rem;
-    color: #fff;
-    margin-bottom: 10px;
-}
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-.highlight {
-    color: #f0134d;
-}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.subtitle {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 30px;
-}
+        h1 {
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
+        .highlight {
+            color: #f0134d;
+        }
 
-.btn {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: #fff;
-    background-color: #f0134d;
-    border: none;
-    border-radius: 50px;
-    margin: 0 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+        }
 
-.btn:hover {
-    background-color: #fa7f72;
-}
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
 
-.info {
-    font-size: 1rem;
-    color: #fff;
-    opacity: 0.8;
-}
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: #fff;
+            background-color: #f0134d;
+            border: none;
+            border-radius: 50px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
+        .btn:hover {
+            background-color: #fa7f72;
+        }
+
+        .info {
+            font-size: 1rem;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+            .btn {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-      <div class="container">
+    <div class="container">
         <div class="content">
             <h1>Welcome to <span class="highlight">ShoeTrade</span></h1>
             <p class="subtitle">Buy, Sell, or Trade Sneakers</p>
