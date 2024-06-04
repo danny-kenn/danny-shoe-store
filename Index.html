@@ -4,83 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to ShoeTrade</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-image: linear-gradient(to right bottom, #43e97b, #38f9d7);
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: #fff;
         }
 
         .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
+            width: 90%;
             padding: 20px;
-        }
-
-        .content {
             text-align: center;
-            flex: 1;
-            animation: fadeIn 1s ease forwards;
-            min-width: 300px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .image-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .header {
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 4rem;
-            color: #fff;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin: 0 0 10px;
         }
 
         .highlight {
-            color: #f0134d;
+            color: #ffeb3b;
         }
 
         .subtitle {
             font-size: 1.5rem;
-            color: #fff;
             margin-bottom: 30px;
         }
 
         .buttons {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
         .btn {
@@ -88,42 +61,55 @@
             font-size: 1.2rem;
             text-decoration: none;
             color: #fff;
-            background-color: #f0134d;
+            background-color: #e74c3c;
             border: none;
             border-radius: 50px;
             margin: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #fa7f72;
+            background-color: #c0392b;
+            transform: translateY(-3px);
         }
 
         .info {
             font-size: 1rem;
-            color: #fff;
             opacity: 0.8;
+            margin-top: 30px;
+        }
+
+        .image-container {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                font-size: 2.5rem;
             }
             .subtitle {
                 font-size: 1.2rem;
             }
-            .buttons {
-                flex-direction: column;
-            }
-            .btn {
-                margin: 10px 0;
+            .buttons .btn {
+                font-size: 1rem;
+                padding: 10px 20px;
             }
         }
 
         @media (max-width: 480px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             .subtitle {
                 font-size: 1rem;
@@ -131,24 +117,25 @@
             .buttons {
                 flex-direction: column;
             }
-            .btn {
+            .buttons .btn {
                 padding: 10px 20px;
                 font-size: 1rem;
+                margin: 10px 0;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="content">
+        <div class="header">
             <h1>Welcome to <span class="highlight">ShoeTrade</span></h1>
             <p class="subtitle">Buy, Sell, or Trade Sneakers</p>
-            <div class="buttons">
-                <a href="signup_webpage.html" class="btn">Sign Up Now</a>
-                <a href="login_webpage.html" class="btn">Sign In</a>
-            </div>
-            <p class="info">Discover a community passionate about sneakers.</p>
         </div>
+        <div class="buttons">
+            <a href="signup_webpage.html" class="btn">Sign Up Now</a>
+            <a href="login_webpage.html" class="btn">Sign In</a>
+        </div>
+        <p class="info">Discover a community passionate about sneakers.</p>
         <div class="image-container">
             <img src="shoes.jpg" alt="Shoes" class="shoes-image">
         </div>
