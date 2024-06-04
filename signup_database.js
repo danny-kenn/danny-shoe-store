@@ -9,6 +9,12 @@ function signUp(username, email, password) {
         alert("User with this email already exists.");
         return false;
     }
+    const existingusername  = signUpDatabase.find(user => user.username ===username);
+    if(existingusername){
+        alert("Username is already in use.");
+        return false;
+    }
+
 
     // Create a new signup entry
     const newEntry = {
