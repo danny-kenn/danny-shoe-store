@@ -13,7 +13,7 @@ function validateLogin() {
         if (existingUser.password === passwordInput) {
             alert("Login successful! Redirecting to homepage...");
             // Redirect to the home page after successful login
-            window.location.href = "/shoe-web/home.html";
+            window.location.href = "home.html";
             return false; // Prevent form submission
         } else {
             displayLoginErrorMessage("Incorrect password. Please try again.");
