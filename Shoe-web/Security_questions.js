@@ -18,7 +18,7 @@ function answerSecurityQuestions() {
         // Redirect to password reset page or allow inline password reset
 
         // For demonstration, let's redirect to a reset password page
-        window.location.href = `reset_password.html?email=${encodeURIComponent(user.email)}`;
+        window.location.href = `/Shoe-web/reset_password.html?email=${encodeURIComponent(user.email)}`;
         return false; // Prevent form submission
     } else {
         displayErrorMessage("Incorrect username or email. Please try again.");
