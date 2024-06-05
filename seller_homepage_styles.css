@@ -1,0 +1,183 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+header {
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+}
+nav .settings {
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+nav .settings:hover .settings-content {
+    display: block;
+}
+nav .settings-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 40px;
+    right: 0;
+    text-align: right;
+}
+nav .settings-content a {
+    padding: 10px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+nav .settings-content a:hover {
+    background-color: #555;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.container section {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer; /* Add cursor pointer for interaction */
+}
+.container section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+.container section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #666;
+}
+.container section::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url('shoes.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+}nav {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.settings {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+#sidebar {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1;
+}
+
+#sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 5px 0;
+}
+
+#sidebar a:hover {
+    background-color: #555;
+}
+
+.settings img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.nav-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-center a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+.nav-center a:hover {
+    text-decoration: underline;
+}
+/* Adjust the button style */
+.dashboard-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#dashboardButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+#dashboardButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#dashboardButton:hover:not(:disabled) {
+    background-color: #45a049;
+}

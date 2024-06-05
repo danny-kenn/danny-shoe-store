@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Homepage - Comrade-Shoes</title>
+    <link rel="stylesheet" href="seller_homepage_styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome back, <span id="firstName"></span> <span id="lastName"></span></h1>
+        </div>
+    </header>
+        <nav>
+            <div class="settings" onclick="toggleSettings()">
+                <span>⚙️ Settings</span>
+                <div id="sidebar">
+                    <a href="seller_profile.html">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="delete_seller_account.html">Delete Account</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <section class="shop-info-section" onclick="openShopInfoPage()">
+            <h2>Shop Information</h2>
+            <p id="shopInfoStatus"></p>
+        </section>
+        <section class="business-info-section" onclick="openBusinessInfoPage()">
+            <h2>Business Information</h2>
+            <p id="businessInfoStatus"></p>
+        </section>
+        <section class="shipping-info-section" onclick="openShippingInfoPage()">
+            <h2>Shipping Information</h2>
+            <p id="shippingInfoStatus"></p>
+        </section>
+        <section class="payment-info-section" onclick="openPaymentInfoPage()">
+            <h2>Payment Information</h2>
+            <p id="paymentInfoStatus"></p>
+        </section>
+        <section class="additional-info-section" onclick="openAdditionalInfoPage()">
+            <h2>Additional Information</h2>
+            <p id="additionalInfoStatus"></p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="dashboard-button-container">
+        <button id="dashboardButton" onclick="goToDashboard()" disabled>Go to Dashboard</button>
+    </div>
+
+    <script src="seller_homepage.js"></script>
+    <script>
+        function toggleSettings() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.style.display = (sidebar.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Function to get the user's name and display it
+        function displayUserName() {
+            var firstNameSpan = document.getElementById('firstName');
+            var lastNameSpan = document.getElementById('lastName');
+            
+            // Replace with actual code to get user's name from local storage or server
+            var user = JSON.parse(localStorage.getItem('currentUser')); // Example: retrieving user from local storage
+            if (user) {
+                firstNameSpan.textContent = user.firstName;
+                lastNameSpan.textContent = user.lastName;
+            }
+        }
+
+        // Call the function when the page loads
+        displayUserName();
+    </script>
+</body>
+</html>
