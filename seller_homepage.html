@@ -9,77 +9,160 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Welcome back, <span id="firstName"></span> <span id="lastName"></span></h1>
-        </div>
+        <h1>Seller Homepage -Welcome back, <span id="firstName"></span> <span id="lastName"></span>!</h1>
+        <button class="settings" onclick="toggleSidebar()">⚙️Settings</button>
     </header>
-        <nav>
-            <div class="settings" onclick="toggleSettings()">
-                <span>⚙️ Settings</span>
-                <div id="sidebar">
-                    <a href="seller_profile.html">Profile</a>
-                    <a href="#">Change Password</a>
-                    <a href="delete_seller_account.html">Delete Account</a>
-                    <a href="#">Logout</a>
-                </div>
-            </div>
-        </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
     <div class="container">
-        <section class="shop-info-section" onclick="openShopInfoPage()">
-            <h2>Shop Information</h2>
-            <p id="shopInfoStatus"></p>
-        </section>
-        <section class="business-info-section" onclick="openBusinessInfoPage()">
-            <h2>Business Information</h2>
-            <p id="businessInfoStatus"></p>
-        </section>
-        <section class="shipping-info-section" onclick="openShippingInfoPage()">
-            <h2>Shipping Information</h2>
-            <p id="shippingInfoStatus"></p>
-        </section>
-        <section class="payment-info-section" onclick="openPaymentInfoPage()">
-            <h2>Payment Information</h2>
-            <p id="paymentInfoStatus"></p>
-        </section>
-        <section class="additional-info-section" onclick="openAdditionalInfoPage()">
-            <h2>Additional Information</h2>
-            <p id="additionalInfoStatus"></p>
-        </section>
-    </div>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
+        <div class="container-buttons">
+            <div class="container-button complete" id="shopInfoButton">
+                <h2>Shop Information</h2>
+                <p id="shopInfoStatus">Complete ✅</p>
+            </div>
+            <div class="container-button pending" id="businessInfoButton">
+                <h2>Business Information</h2>
+                <p id="businessInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="shippingButton">
+                <h2>Shipping Information</h2>
+                <p id="shippingInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="paymentButton">
+                <h2>Payment Information</h2>
+                <p id="paymentInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="additionalButton">
+                <h2>Additional Information</h2>
+                <p id="additionalInfoStatus">Pending</p>
+            </div>
         </div>
+    </div>
+    <button id="dashboardButton" class="inactive" onclick="goToDashboard()" disabled>Go to Dashboard</button>
+    <footer>
+        <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
     </footer>
 
-    <div class="dashboard-button-container">
-        <button id="dashboardButton" onclick="goToDashboard()" disabled>Go to Dashboard</button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#" onclick="deleteAccount()">Delete Account</a>
+        <a href="#">Logout</a>
+        <a href="#">Profile</a>
+        <a href="#">Change Password</a>
     </div>
 
     <script src="seller_homepage.js"></script>
     <script>
-        function toggleSettings() {
-            var sidebar = document.getElementById('sidebar');
-            sidebar.style.display = (sidebar.style.display === 'block') ? 'none' : 'block';
+        document.addEventListener('DOMContentLoaded', function () {
+            // Event listeners for each button
+            document.getElementById('businessInfoButton').addEventListener('click', function() {
+                handleButtonClick('businessInfoButton', 'business_info.html', checkBusinessInfo);
+            });
+            document.getElementById('shippingButton').
+            addEventListener('click', function() {
+                handleButtonClick('shippingButton', 'shipping_info.html', checkShippingInfo);
+            });
+            document.getElementById('paymentButton').addEventListener('click', function() {
+                handleButtonClick('paymentButton', 'payment_info.html', checkPaymentInfo);
+            });
+            document.getElementById('additionalButton').addEventListener('click', function() {
+                handleButtonClick('additionalButton', 'additional_info.html', checkAdditionalInfo);
+            });
+        });
+
+        function handleButtonClick(buttonId, redirectUrl, checkFunction) {
+            const button = document.getElementById(buttonId);
+            const isComplete = checkFunction();
+            if (!isComplete) {
+                window.location.href = redirectUrl;
+            }
+            updateButtonStatus(button, isComplete);
         }
 
-        // Function to get the user's name and display it
-        function displayUserName() {
-            var firstNameSpan = document.getElementById('firstName');
-            var lastNameSpan = document.getElementById('lastName');
-            
-            // Replace with actual code to get user's name from local storage or server
-            var user = JSON.parse(localStorage.getItem('currentUser')); // Example: retrieving user from local storage
-            if (user) {
-                firstNameSpan.textContent = user.firstName;
-                lastNameSpan.textContent = user.lastName;
+        function updateButtonStatus(button, isComplete) {
+            if (isComplete) {
+                button.classList.remove('pending');
+                button.classList.add('complete');
+                button.querySelector('p').textContent = 'Complete ✅';
+            } else {
+                button.classList.remove('complete');
+                button.classList.add('pending');
+                button.querySelector('p').textContent = 'Pending';
             }
         }
 
-        // Call the function when the page loads
-        displayUserName();
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        function deleteAccount() {
+            const confirmDelete = confirm('Are you sure you want to delete your account?');
+            if (confirmDelete) {
+                // Implement delete account logic here
+                alert('Account deleted successfully.');
+                window.location.href = 'index.html';
+            }
+        }
+
+        function checkShopInfo() {
+            const user = getUserData();
+            return user && user.firstName && user.middleName && user.lastName &&
+                   user.nationality && user.nationalId && user.phoneNumber &&
+                   user.location && user.email;
+        }
+
+        function checkBusinessInfo() {
+            const businessInfo = getBusinessInfo();
+            return businessInfo && businessInfo.businessName && businessInfo.businessType &&
+                   businessInfo.businessRegistrationNumber && businessInfo.businessLocation;
+        }
+
+        function checkShippingInfo() {
+            const shippingInfo = getShippingInfo();
+            return shippingInfo && shippingInfo.shippingAddress && shippingInfo.shippingMethod &&
+                   shippingInfo.deliveryTime;
+        }
+
+        function checkPaymentInfo() {
+            const paymentInfo = getPaymentInfo();
+            return paymentInfo && paymentInfo.paymentMethod && paymentInfo.cardNumber &&
+                   paymentInfo.expiryDate && paymentInfo.securityCode;
+        }
+
+        function checkAdditionalInfo() {
+            const additionalInfo = getAdditionalInfo();
+            return additionalInfo && additionalInfo.additionalDetails1 &&
+                   additionalInfo.additionalDetails2 && additionalInfo.additionalDetails3;
+        }
+
+        function getUserData() {
+            const userData = localStorage.getItem('sellerUser');
+            return userData ? JSON.parse(userData) : null;
+        }
+
+        function getBusinessInfo() {
+            const businessInfo = localStorage.getItem('businessInfo');
+            return businessInfo ? JSON.parse(businessInfo) : null;
+        }
+
+        function getShippingInfo() {
+            const shippingInfo = localStorage.getItem('shippingInfo');
+            return shippingInfo ? JSON.parse(shippingInfo) : null;
+        }
+
+        function getPaymentInfo() {
+            const paymentInfo = localStorage.getItem('paymentInfo');
+            return paymentInfo ? JSON.parse(paymentInfo) : null;
+        }
+
+        function getAdditionalInfo() {
+            const additionalInfo = localStorage.getItem('additionalInfo');
+            return additionalInfo ? JSON.parse(additionalInfo) : null;
+        }
     </script>
 </body>
 </html>
