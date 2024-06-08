@@ -5,161 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Homepage - Comrade-Shoes</title>
     <link rel="stylesheet" href="seller_homepage_styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-header h1 {
-    margin: 0;
-}
+        header h1 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
 
-header .settings {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2em;
-    cursor: pointer;
-}
+        header .settings {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
 
-nav {
-    background-color: #444;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
+        nav {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
 
-nav a {
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-}
+        nav a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
 
-nav a:hover {
-    background-color: #555;
-}
+        nav a:hover {
+            background-color: #555;
+        }
 
-.container {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-}
+        .container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.container-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
+        .container-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
 
-.container-button {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    flex: 1;
-    min-width: 200px;
-    cursor: pointer;
-}
+        .container-button {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            cursor: pointer;
+        }
 
-.container-button.complete {
-    background-color: #d4edda;
-}
+        .container-button.complete {
+            background-color: #d4edda;
+        }
 
-.container-button.pending {
-    background-color: #f8d7da;
-}
+        .container-button.pending {
+            background-color: #f8d7da;
+        }
 
-#dashboardButton {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-}
+        #dashboardButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
 
-#dashboardButton.inactive {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
+        #dashboardButton.inactive {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: white;
-    transition: left 0.3s;
-    padding: 10px;
-}
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            transition: left 0.3s;
+            padding: 10px;
+        }
 
-.sidebar a {
-    display: block;
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-}
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
 
-.sidebar a:hover {
-    background-color: #444;
-}
+        .sidebar a:hover {
+            background-color: #444;
+        }
 
-#overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-@media screen and (max-width: 600px) {
-    header, nav, .container {
-        flex-direction: column;
-        align-items: center;
-    }
+        @media screen and (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
 
-    .container-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
+            .container-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
 
-    .container-button {
-        min-width: 100%;
-    }
-}
+            .container-button {
+                min-width: 100%;
+            }
 
+            .sidebar {
+                left: -100%;
+                width: 80%;
+            }
+
+            .sidebar a {
+                padding: 10px 0;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Seller Homepage - Welcome back, <span id="firstName"></span> <span id="lastName"></span>!</h1>
-        <button class="settings" onclick="toggleSidebar()">⚙️Settings</button>
+        <button class="settings" onclick="toggleSidebar()"><i class="fas fa-cog"></i> Settings</button>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -189,9 +202,8 @@ footer {
                 <p id="additionalInfoStatus">Pending</p>
             </div>
         </div>
+        <button id="dashboardButton" class="inactive" onclick="goToDashboard()" disabled>Go to Dashboard</button>
     </div>
-    <button id="dashboardButton" class="inactive" onclick="goToDashboard()" disabled>Go to Dashboard</button>
-    
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
@@ -203,154 +215,155 @@ footer {
 
     <!-- Overlay for Sidebar -->
     <div id="overlay" onclick="closeSidebar()"></div>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const user = getUserData();
-    if (user) {
-        document.getElementById('firstName').textContent = user.firstName;
-        document.getElementById('lastName').textContent = user.lastName;
-    }
+            const user = getUserData();
+            if (user) {
+                document.getElementById('firstName').textContent = user.firstName;
+                document.getElementById('lastName').textContent = user.lastName;
+            }
 
-    const dashboardButton = document.getElementById('dashboardButton');
-    checkAllComplete(dashboardButton);
+            const dashboardButton = document.getElementById('dashboardButton');
+            checkAllComplete(dashboardButton);
 
-    // Initially mark Shop Information as complete
-    updateButtonStatus(document.getElementById('shopInfoButton'), true);
-});
+            // Initially mark Shop Information as complete
+            updateButtonStatus(document.getElementById('shopInfoButton'), true);
+        });
 
-function handleButtonClick(buttonId, redirectUrl, checkFunction) {
-    const button = document.getElementById(buttonId);
-    const isComplete = checkFunction();
-    if (!isComplete) {
-        window.location.href = redirectUrl;
-    }
-    updateButtonStatus(button, isComplete);
-    checkAllComplete(document.getElementById('dashboardButton'));
-}
+        function handleButtonClick(buttonId, redirectUrl, checkFunction) {
+            const button = document.getElementById(buttonId);
+            const isComplete = checkFunction();
+            if (!isComplete) {
+                window.location.href = redirectUrl;
+            }
+            updateButtonStatus(button, isComplete);
+            checkAllComplete(document.getElementById('dashboardButton'));
+        }
 
-function updateButtonStatus(button, isComplete) {
-    if (isComplete) {
-        button.classList.remove('pending');
-        button.classList.add('complete');
-        button.querySelector('p').textContent = 'Complete ✅';
-    } else {
-        button.classList.remove('complete');
-        button.classList.add('pending');
-        button.querySelector('p').textContent = 'Pending';
-    }
-}
+        function updateButtonStatus(button, isComplete) {
+            if (isComplete) {
+                button.classList.remove('pending');
+                button.classList.add('complete');
+                button.querySelector('p').textContent = 'Complete ✅';
+            } else {
+                button.classList.remove('complete');
+                button.classList.add('pending');
+                button.querySelector('p').textContent = 'Pending';
+            }
+        }
 
-function checkAllComplete(dashboardButton) {
-    const allComplete = [
-        checkShopInfo(),
-        checkBusinessInfo(),
-        checkShippingInfo(),
-        checkPaymentInfo(),
-        checkAdditionalInfo()
-    ].every(status => status === true);
+        function checkAllComplete(dashboardButton) {
+            const allComplete = [
+                checkShopInfo(),
+                checkBusinessInfo(),
+                checkShippingInfo(),
+                checkPaymentInfo(),
+                checkAdditionalInfo()
+            ].every(status => status === true);
 
-    if (allComplete) {
-        dashboardButton.classList.remove('inactive');
-        dashboardButton.disabled = false;
-    } else {
-        dashboardButton.classList.add('inactive');
-        dashboardButton.disabled = true;
-    }
-}
+            if (allComplete) {
+                dashboardButton.classList.remove('inactive');
+                dashboardButton.disabled = false;
+            } else {
+                dashboardButton.classList.add('inactive');
+                dashboardButton.disabled = true;
+            }
+        }
 
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    if (sidebar.style.left === '0px') {
-        closeSidebar();
-    } else {
-        sidebar.style.left = '0px';
-        overlay.style.display = 'block';
-    }
-}
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar.style.left === '0px') {
+                closeSidebar();
+            } else {
+                sidebar.style.left = '0px';
+                overlay.style.display = 'block';
+            }
+        }
 
-function closeSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    sidebar.style.left = '-250px';
-    overlay.style.display = 'none';
-}
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.style.left = '-250px';
+            overlay.style.display = 'none';
+        }
 
-function deleteAccount() {
-    const confirmDelete = confirm('Are you sure you want to delete your account?');
-    if (confirmDelete) {
-        // Implement delete account logic here
-        alert('Account deleted successfully.');
-        window.location.href = 'index.html';
-    }
-}
+        function deleteAccount() {
+            const confirmDelete = confirm('Are you sure you want to delete your account?');
+            if (confirmDelete) {
+                // Implement delete account logic here
+                alert('Account deleted successfully.');
+                window.location.href = 'index.html';
+            }
+        }
 
-function checkShopInfo() {
-    const user = getUserData();
-    return user && user.firstName && user.middleName && user.lastName &&
-           user.nationality && user.nationalId && user.phoneNumber &&
-           user.location && user.email;
-}
+        function checkShopInfo() {
+            const user = getUserData();
+            return user && user.firstName && user.middleName && user.lastName &&
+                   user.nationality && user.nationalId && user.phoneNumber &&
+                   user.location && user.email;
+        }
 
-function checkBusinessInfo() {
-    const businessInfo = getBusinessInfo();
-    return businessInfo && businessInfo.businessName && businessInfo.businessType &&
-           businessInfo.businessRegistrationNumber && businessInfo.businessLocation;
-}
+        function checkBusinessInfo() {
+                const businessInfo = getBusinessInfo();
+                return businessInfo && businessInfo.businessName && businessInfo.businessType &&
+                       businessInfo.businessRegistrationNumber && businessInfo.businessLocation;
+            }
 
-function checkShippingInfo() {
-    const shippingInfo = getShippingInfo();
-    return shippingInfo && shippingInfo.shippingAddress && shippingInfo.shippingMethod &&
-           shippingInfo.deliveryTime;
-}
+            function checkShippingInfo() {
+                const shippingInfo = getShippingInfo();
+                return shippingInfo && shippingInfo.shippingAddress && shippingInfo.shippingMethod &&
+                       shippingInfo.deliveryTime;
+            }
 
-function checkPaymentInfo() {
-    const paymentInfo = getPaymentInfo();
-    return paymentInfo && paymentInfo.paymentMethod && paymentInfo.cardNumber &&
-           paymentInfo.expiryDate && paymentInfo.securityCode;
-}
+            function checkPaymentInfo() {
+                const paymentInfo = getPaymentInfo();
+                return paymentInfo && paymentInfo.paymentMethod && paymentInfo.cardNumber &&
+                       paymentInfo.expiryDate && paymentInfo.securityCode;
+            }
 
-function checkAdditionalInfo() {
-    const additionalInfo = getAdditionalInfo();
-    return additionalInfo && additionalInfo.additionalDetails1 &&
-           additionalInfo.additionalDetails2 && additionalInfo.additionalDetails3;
-}
+            function checkAdditionalInfo() {
+                const additionalInfo = getAdditionalInfo();
+                return additionalInfo && additionalInfo.additionalDetails1 &&
+                       additionalInfo.additionalDetails2 && additionalInfo.additionalDetails3;
+            }
 
-function getUserData() {
-    const userData = localStorage.getItem('sellerUser');
-    return userData ? JSON.parse(userData) : null;
-}
+            function getUserData() {
+                const userData = localStorage.getItem('sellerUser');
+                return userData ? JSON.parse(userData) : null;
+            }
 
-function getBusinessInfo() {
-    const businessInfo = localStorage.getItem('businessInfo');
-    return businessInfo ? JSON.parse(businessInfo) : null;
-}
+            function getBusinessInfo() {
+                const businessInfo = localStorage.getItem('businessInfo');
+                return businessInfo ? JSON.parse(businessInfo) : null;
+            }
 
-function getShippingInfo() {
-    const shippingInfo = localStorage.getItem('shippingInfo');
-    return shippingInfo ? JSON.parse(shippingInfo) : null;
-}
+            function getShippingInfo() {
+                const shippingInfo = localStorage.getItem('shippingInfo');
+                return shippingInfo ? JSON.parse(shippingInfo) : null;
+            }
 
-function getPaymentInfo() {
-    const paymentInfo = localStorage.getItem('paymentInfo');
-    return paymentInfo ? JSON.parse(paymentInfo) : null;
-}
+            function getPaymentInfo() {
+                const paymentInfo = localStorage.getItem('paymentInfo');
+                return paymentInfo ? JSON.parse(paymentInfo) : null;
+            }
 
-function getAdditionalInfo() {
-    const additionalInfo = localStorage.getItem('additionalInfo');
-    return additionalInfo ? JSON.parse(additionalInfo) : null;
-}
+            function getAdditionalInfo() {
+                const additionalInfo = localStorage.getItem('additionalInfo');
+                return additionalInfo ? JSON.parse(additionalInfo) : null;
+            }
 
-function redirectToPage(url) {
-    window.location.href = url;
-}
+            function redirectToPage(url) {
+                window.location.href = url;
+            }
 
-function goToDashboard() {
-    window.location.href = 'dashboard.html';
-}
+            function goToDashboard() {
+                window.location.href = 'dashboard.html';
+            }
+        </script>
 
-    </script>
+        <script src="seller_homepage.js"></script>
+    </body>
+    </html>
 
-    <script src="seller_homepage.js"></script>
-</body>
-</html>
