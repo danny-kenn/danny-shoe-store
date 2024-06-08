@@ -35,7 +35,7 @@ nav {
 
 nav a {
     color: #fff;
-    margin: 0 1rem;
+    margin: 0 3rem;
     text-decoration: none;
 }
 
@@ -43,7 +43,7 @@ nav a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
 .container-buttons {
@@ -58,7 +58,7 @@ nav a {
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
+    padding: 0.5rem;
     text-align: center;
     transition: all 0.3s ease;
     width: 250px;
@@ -112,7 +112,7 @@ footer {
     height: 100%;
     left: -250px;
     overflow: auto;
-    padding: 1rem;
+    padding: 0.1rem;
     position: fixed;
     top: 0;
     transition: 0.3s;
@@ -122,7 +122,7 @@ footer {
 
 .sidebar a {
     color: #fff;
-    display: block;
+    display:block;
     margin: 1rem 0;
     text-decoration: none;
 }
