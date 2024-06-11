@@ -58,7 +58,7 @@ nav a {
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem;
+    padding: 5rem;
     text-align: center;
     transition: all 0.3s ease;
     width: 250px;
@@ -83,7 +83,7 @@ button {
     border-radius: 10px;
     color: #fff;
     cursor: pointer;
-    padding: 1rem 2rem;
+    padding:2rem;
     font-size: 1rem;
     transition: background-color 0.3s ease;
     display: block;

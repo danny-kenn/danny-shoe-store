@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Account - Comrade-Shoes</title>
+    <title>Contact Us - Comrade-Shoes</title>
     <style>
         /* General Styles */
         body {
@@ -65,38 +65,38 @@
             z-index: -1;
         }
 
-        /* Deletion Form */
-        .deletion-section {
+        /* Contact Section */
+        .contact-section {
             padding: 80px 20px;
             text-align: center;
             border-radius: 10px;
             margin-bottom: 30px;
         }
-        .deletion-section h2 {
+        .contact-section h2 {
             font-size: 3em;
             margin-bottom: 20px;
             color: #333;
             animation: fadeIn 1s ease-in-out;
         }
-        .deletion-section p {
+        .contact-section p {
             font-size: 1.2em;
             line-height: 1.6;
             margin-bottom: 40px;
             color: #666;
             animation: fadeIn 1.5s ease-in-out;
         }
-        .deletion-form {
-            max-width: 400px;
+        .contact-form {
+            max-width: 600px;
             margin: 0 auto;
             text-align: left;
             animation: fadeIn 2s ease-in-out;
         }
-        .deletion-form label {
+        .contact-form label {
             display: block;
             font-size: 1.2em;
             margin-bottom: 8px;
         }
-        .deletion-form input {
+        .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -105,7 +105,11 @@
             border-radius: 5px;
             background-color: rgba(255, 255, 255, 0.9);
         }
-        .deletion-form button {
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .contact-form button {
             padding: 15px 30px;
             background: linear-gradient(to right, #ff6a00, #ee0979);
             color: #fff;
@@ -119,11 +123,11 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .deletion-form button:hover {
+        .contact-form button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
         }
-        .deletion-form button:active {
+        .contact-form button:active {
             transform: translateY(1px);
             box-shadow: none;
         }
@@ -147,7 +151,7 @@
 </head>
 <body>
     <header>
-        <h1>Delete Your Account</h1>
+        <h1>Contact Us - Comrade-Shoes</h1>
     </header>
     <nav>
         <a href="seller_homepage.html">Home</a>
@@ -155,17 +159,20 @@
         <a href="seller_contact.html">Contact</a>
     </nav>
     <div class="container">
-        <section class="deletion-section">
-            <h2>Delete Your Account</h2>
-            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-            <form class="deletion-form" id="deletion-form">
+        <section class="contact-section">
+            <h2>Get in Touch</h2>
+            <p>Have questions? We're here to help. Send us a message and we'll get back to you as soon as possible.</p>
+            <form class="contact-form" id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
                 
-                <button type="submit">Delete Account</button>
+                <button type="submit">Send Message</button>
             </form>
         </section>
     </div>
@@ -174,32 +181,18 @@
     </footer>
 
     <script type="text/javascript">
-        document.getElementById('deletion-form').addEventListener('submit', function(event) {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
-            // Get form values
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
+            // Construct the URL to open WhatsApp chat
+            const whatsappUrl = `https://wa.me/+254112083153?text=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message)}`;
 
-            // Retrieve user data from local storage
-            const existingSellerData = JSON.parse(localStorage.getItem('sellerUsers')) || [];
-            const userIndex = existingSellerData.findIndex(user => user.email === email && user.password === password);
-
-            if (userIndex === -1) {
-                alert('Invalid email or password. Please try again.');
-                return;
-            }
-
-            // Remove user from local storage
-            existingSellerData.splice(userIndex, 1);
-            localStorage.setItem('sellerUsers', JSON.stringify(existingSellerData));
-
-            // Clear session storage
-            sessionStorage.removeItem('currentSeller');
-
-            // Redirect to home page
-            alert('Account successfully deleted.');
-            window.location.href = 'index.html';
+            // Open the WhatsApp URL
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>

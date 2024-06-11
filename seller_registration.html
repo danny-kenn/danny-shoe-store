@@ -12,8 +12,8 @@
     </header>
     <nav>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="seller_about.html">About</a>
+        <a href="seller_contact.html">Contact</a>
     </nav>
     <div class="container">
         <section class="registration-section">
@@ -117,11 +117,12 @@
 
             // Alert with user ID
             alert(`Successful registration. Your User ID is: ${userId}`);
+            //Alert to master the userid due to its importance during signin
+            alert(`ensure you master your userid ${userId} youll use it to login to your account`);
+            alert(`you can always find your details including your userId on your profile.success😊`);
 
             // Redirect to seller homepage
-          
-
-                window.location.href = `seller_profile.html?userId=${userId}`;
+          window.location.href = `seller_profile.html?userId=${userId}`;
             
         });
     </script>
