@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Registration - Comrade-Shoes</title>
-    <link rel="stylesheet" href ="seller_registration_styles.css"></style>
+    <link rel="stylesheet" href="seller_registration_styles.css">
 </head>
 <body>
     <header>
-        <h1>Seller Registration - Comrade-Shoes</h1>
+        <h1>Personal Details</h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -17,8 +17,8 @@
     </nav>
     <div class="container">
         <section class="registration-section">
-            <h2>Register as a Seller</h2>
-            <p>Please fill in the following details to register as a seller.</p>
+            <h2>Personal Details</h2>
+            <p>We just need you to fill in a few details here</p>
             <form class="registration-form" id="registration-form">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" required>
@@ -29,21 +29,36 @@
                 <label for="lastName">Last Name:</label>
                 <input type="text" id="lastName" name="lastName" required>
                 
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+                
                 <label for="nationality">Nationality:</label>
                 <select id="nationality" name="nationality" required>
-                    <option value="Kenyan">Kenyan</option>
-                    <option value="Foreign">Foreign</option>
+                    <option value="Kenya" data-code="+254">Kenyan</option>
+                    <option value="Uganda" data-code="+256">Ugandan</option>
+                    <option value="Tanzania" data-code="+255">Tanzanian</option>
+                    <option value="Ethiopia" data-code="+251">Ethiopian</option>
+                    <option value="Somalia" data-code="+252">Somalian</option>
+                    <option value="Nigeria" data-code="+234">Nigerian</option>
+                    <option value="Egypt" data-code="+20">Egyptian</option>
+                    <option value="South Africa" data-code="+27">South African</option>
                 </select>
                 
                 <label for="nationalId">National ID / Foreign ID:</label>
                 <input type="text" id="nationalId" name="nationalId" required>
+                
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
                 
                 <label for="phoneNumber">Phone Number:</label>
                 <input type="tel" id="phoneNumber" name="phoneNumber" required>
                 
                 <label for="location">Location / Town:</label>
                 <input type="text" id="location" name="location" required>
-
+                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
@@ -63,6 +78,22 @@
     </footer>
 
     <script type="text/javascript">
+        document.getElementById('nationality').addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const phoneCode = selectedOption.getAttribute('data-code');
+            const phoneNumberInput = document.getElementById('phoneNumber');
+
+            // Remove any existing country code
+            const currentPhoneNumber = phoneNumberInput.value;
+            const currentCountryCodeMatch = currentPhoneNumber.match(/^\+\d+/);
+            if (currentCountryCodeMatch) {
+                phoneNumberInput.value = currentPhoneNumber.replace(currentCountryCodeMatch[0], '').trim();
+            }
+
+            // Add the selected country code
+            phoneNumberInput.value = phoneCode + ' ' + phoneNumberInput.value;
+        });
+
         document.getElementById('registration-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -70,6 +101,7 @@
             const firstName = document.getElementById('firstName').value.trim();
             const middleName = document.getElementById('middleName').value.trim();
             const lastName = document.getElementById('lastName').value.trim();
+            const birthdate = document.getElementById('birthdate').value;
             const nationality = document.getElementById('nationality').value;
             const nationalId = document.getElementById('nationalId').value.trim();
             const phoneNumber = document.getElementById('phoneNumber').value.trim();
@@ -102,6 +134,7 @@
                 firstName,
                 middleName,
                 lastName,
+                birthdate,
                 nationality,
                 nationalId,
                 phoneNumber,
@@ -117,13 +150,11 @@
 
             // Alert with user ID
             alert(`Successful registration. Your User ID is: ${userId}`);
-            //Alert to master the userid due to its importance during signin
-            alert(`ensure you master your userid ${userId} youll use it to login to your account`);
-            alert(`you can always find your details including your userId on your profile.success😊`);
+            alert(`Ensure you master your user ID ${userId} as you'll use it to log in to your account.`);
+            alert(`You can always find your details including your user ID on your profile. Success! 😊`);
 
             // Redirect to seller homepage
-          window.location.href = `seller_profile.html?userId=${userId}`;
-            
+            window.location.href = `seller_profile.html?userId=${userId}`;
         });
     </script>
 </body>
