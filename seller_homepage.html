@@ -311,12 +311,23 @@ footer {
         width: 200px; /* Adjust sidebar width for smaller screens */
     }
 }
+.container-button.complete {
+    background-color: #d4edda; /* Green background for completed */
+    color: #155724; /* Text color for completed */
+}
+
+.container-button.pending {
+    background-color: #f8d7da; /* Light red background for pending */
+    color: #721c24; /* Text color for pending */
+}
+
 
     </style>
+
 </head>
 <body>
     <header>
-        <h1>Seller info_page - please fill in these documents to proceed to your dashboard <span id="firstName"></span> <span id="lastName"></span>!</h1>
+        <h1>Seller Info Page - We only need alittle more information about yourself before we proceed to your dashboard<span id="firstName"></span> <span id="lastName"></span>!</h1>
         <button class="settings" onclick="toggleSidebar()">⚙️ Settings</button>
     </header>
     <nav>
@@ -326,14 +337,27 @@ footer {
     </nav>
     <div class="container">
         <div class="container-buttons">
-            <div class="container-button complete" id="shopInfoButton" onclick="redirectToPage('shop_info.html')">
-                <h2>Shop Information</h2>
-                <p id="shopInfoStatus">Complete ✅</p>
-            </div>
-            <div class="container-button pending" id="businessInfoButton" onclick="handleButtonClick('businessInfoButton', 'business_info.html', checkBusinessInfo)">
-                <h2>Business Information</h2>
-                <p id="businessInfoStatus">Pending</p>
-            </div>
+
+            <div class="container-buttons">
+                <div class="container-button complete" id="shopInfoButton" onclick="redirectToPage('shop_info.html')">
+                    <h2>Shop Information</h2>
+                    <p id="shopInfoStatus">Complete ✅</p>
+                </div>
+                    </div>
+                    <div class="container-button pending" id="businessInfoButton" onclick="redirectToPage('business_info.html')">
+                        <h2>Business Information</h2>
+                        <p id="businessInfoStatus">Pending</p>
+                    </div>
+                    <!-- Other buttons omitted for brevity -->
+                </div>
+                
+                <script>
+                    function redirectToPage(page) {
+                        window.location.href = page;
+                    }
+                </script>
+                
+            
             <div class="container-button pending" id="shippingButton" onclick="handleButtonClick('shippingButton', 'shipping_info.html', checkShippingInfo)">
                 <h2>Shipping Information</h2>
                 <p id="shippingInfoStatus">Pending</p>
@@ -349,7 +373,6 @@ footer {
         </div>
     </div>
     <button id="dashboardButton" class="inactive" onclick="goToDashboard()" disabled>Go to Dashboard</button>
-    
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
@@ -361,153 +384,105 @@ footer {
 
     <!-- Overlay for Sidebar -->
     <div id="overlay" onclick="closeSidebar()"></div>
+    <script src="seller_homepage.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const user = getUserData();
-            if (user) {
-                document.getElementById('firstName').textContent = user.firstName;
-                document.getElementById('lastName').textContent = user.lastName;
+    fetchUserData();
+
+    const dashboardButton = document.getElementById('dashboardButton');
+    checkAllComplete(dashboardButton);
+
+    // Initially mark Shop Information as complete
+    updateButtonStatus(document.getElementById('shopInfoButton'), true);
+});
+
+function fetchUserData() {
+    fetch('/api/getUserData') // Adjust the endpoint as per your server configuration
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.user) {
+                document.getElementById('firstName').textContent = data.user.firstName;
+                document.getElementById('lastName').textContent = data.user.lastName;
+                // You can add more fields as needed
             }
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+}
 
-            const dashboardButton = document.getElementById('dashboardButton');
-            checkAllComplete(dashboardButton);
+function handleButtonClick(buttonId, redirectUrl, checkFunction) {
+    const button = document.getElementById(buttonId);
+    const isComplete = checkFunction();
+    if (!isComplete) {
+        window.location.href = redirectUrl;
+    }
+    updateButtonStatus(button, isComplete);
+    checkAllComplete(document.getElementById('dashboardButton'));
+}
 
-            // Initially mark Shop Information as complete
-            updateButtonStatus(document.getElementById('shopInfoButton'), true);
-        });
+function updateButtonStatus(button, isComplete) {
+    if (isComplete) {
+        button.classList.remove('pending');
+        button.classList.add('complete');
+        button.querySelector('p').textContent = 'Complete ✅';
+    } else {
+        button.classList.remove('complete');
+        button.classList.add('pending');
+        button.querySelector('p').textContent = 'Pending';
+    }
+}
 
-        function handleButtonClick(buttonId, redirectUrl, checkFunction) {
-            const button = document.getElementById(buttonId);
-            const isComplete = checkFunction();
-            if (!isComplete) {
-                window.location.href = redirectUrl;
-            }
-            updateButtonStatus(button, isComplete);
-            checkAllComplete(document.getElementById('dashboardButton'));
-        }
+function checkAllComplete(dashboardButton) {
+    const allComplete = [
+        checkShopInfo(),
+        checkBusinessInfo(),
+        checkShippingInfo(),
+        checkPaymentInfo(),
+        checkAdditionalInfo()
+    ].every(status => status === true);
 
-        function updateButtonStatus(button, isComplete) {
-            if (isComplete) {
-                button.classList.remove('pending');
-                button.classList.add('complete');
-                button.querySelector('p').textContent = 'Complete ✅';
-            } else {
-                button.classList.remove('complete');
-                button.classList.add('pending');
-                button.querySelector('p').textContent = 'Pending';
-            }
-        }
+    if (allComplete) {
+        dashboardButton.classList.remove('inactive');
+        dashboardButton.disabled = false;
+    } else {
+        dashboardButton.classList.add('inactive');
+        dashboardButton.disabled = true;
+    }
+}
 
-        function checkAllComplete(dashboardButton) {
-            const allComplete = [
-                checkShopInfo(),
-                checkBusinessInfo(),
-                checkShippingInfo(),
-                checkPaymentInfo(),
-                checkAdditionalInfo()
-            ].every(status => status === true);
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    if (sidebar.style.left === '0px') {
+        closeSidebar();
+    } else {
+        sidebar.style.left = '0px';
+        overlay.style.display = 'block';
+    }
+}
 
-            if (allComplete) {
-                dashboardButton.classList.remove('inactive');
-                dashboardButton.disabled = false;
-            } else {
-                dashboardButton.classList.add('inactive');
-                dashboardButton.disabled = true;
-            }
-        }
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.style.left = '-250px';
+    overlay.style.display = 'none';
+}
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            if (sidebar.style.left === '0px') {
-                closeSidebar();
-            } else {
-                sidebar.style.left = '0px';
-                overlay.style.display = 'block';
-            }
-        }
-
-        function closeSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.style.left = '-250px';
-            overlay.style.display = 'none';
-        }
-
-        function deleteAccount() {
-            const confirmDelete = confirm('Are you sure you want to delete your account?');
-            if (confirmDelete) {
-                // Implement delete account logic here
+function deleteAccount() {
+    const confirmDelete = confirm('Are you sure you want to delete your account?');
+    if (confirmDelete) {
+        fetch('/api/deleteAccount', { method: 'DELETE' }) // Adjust the endpoint as per your server configuration
+            .then(response => response.json())
+            .then(data => {
                 alert('Account deleted successfully.');
                 window.location.href = 'index.html';
-            }
-        }
+            })
+            .catch(error => console.error('Error deleting account:', error));
+    }
+}
 
-        function checkShopInfo() {
-            const user = getUserData();
-            return user && user.firstName && user.middleName && user.lastName &&
-                user.nationality && user.nationalId && user.phoneNumber &&
-                user.location && user.email;
-        }
 
-        function checkBusinessInfo() {
-            const businessInfo = getBusinessInfo();
-            return businessInfo && businessInfo.businessName && businessInfo.businessType &&
-                businessInfo.businessRegistrationNumber && businessInfo.businessLocation;
-        }
 
-        function checkShippingInfo() {
-            const shippingInfo = getShippingInfo();
-            return shippingInfo && shippingInfo.shippingAddress && shippingInfo.shippingMethod &&
-                shippingInfo.deliveryTime;
-        }
-
-        function checkPaymentInfo() {
-            const paymentInfo = getPaymentInfo();
-            return paymentInfo && paymentInfo.paymentMethod && paymentInfo.cardNumber &&
-                paymentInfo.expiryDate && paymentInfo.securityCode;
-        }
-
-        function checkAdditionalInfo() {
-            const additionalInfo = getAdditionalInfo();
-            return additionalInfo && additionalInfo.additionalDetails1 &&
-                additionalInfo.additionalDetails2 && additionalInfo.additionalDetails3;
-        }
-
-        function getUserData() {
-            const userData = localStorage.getItem('sellerUser');
-            return userData ? JSON.parse(userData) : null;
-        }
-
-        function getBusinessInfo() {
-            const businessInfo = localStorage.getItem('businessInfo');
-            return businessInfo ? JSON.parse(businessInfo) : null;
-        }
-
-        function getShippingInfo() {
-            const shippingInfo = localStorage.getItem('shippingInfo');
-            return shippingInfo ? JSON.parse(shippingInfo) : null;
-        }
-
-        function getPaymentInfo() {
-            const paymentInfo = localStorage.getItem('paymentInfo');
-            return paymentInfo ? JSON.parse(paymentInfo) : null;
-        }
-
-        function getAdditionalInfo() {
-            const additionalInfo = localStorage.getItem('additionalInfo');
-            return additionalInfo ? JSON.parse(additionalInfo) : null;
-        }
-
-        function redirectToPage(url) {
-            window.location.href = url;
-        }
-
-        function goToDashboard() {
-            window.location.href = 'dashboard.html';
-        }
     </script>
-
-    <script src="seller_homepage.js"></script>
+    
 </body>
 </html>

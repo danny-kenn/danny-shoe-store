@@ -1,18 +1,16 @@
-const {
-    createPool
- } = require('mysql');
- 
- const pool= createPool({
-    host: "localhost",
-    user:"root",
-    password:"6132",
-    database:"mydatabase",
-    connectionLimit: 10
- })
+const mysql = require('mysql2'); // Use mysql2 library
 
- pool.query(`select *from registration`, (err, result, fields)=>{
-    if (err){
+const pool = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "6132",
+    database: "mydatabase",
+    connectionLimit: 10
+});
+
+pool.query('SELECT * FROM registration', (err, result, fields) => {
+    if (err) {
         return console.log(err);
     }
-    return console.log(result);
- })
+    console.log(result);
+});
