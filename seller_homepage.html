@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller homepage - Comrade-Shoes</title>
+    <link rel="stylesheet" href="dashboard_styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        /* Your existing styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.2em; /* Adjust font size for smaller screens */
+        }
+
+        header .settings {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .container-buttons {
+            display: -webkit-inline-box;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center; /* Center buttons on smaller screens */
+        }
+
+        .container-button {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            flex: 20;
+            min-width: 150px;
+            cursor: pointer;
+        }
+
+        .container-button.complete {
+            background-color: #d4edda;
+        }
+
+        .container-button.pending {
+            background-color: #f8d7da;
+        }
+
+        #dashboardButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 200px; /* Adjust width for smaller screens */
+        }
+
+        #dashboardButton.inactive {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            transition: left 0.3s;
+            padding: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        @media screen and (max-width: 600px) {
+            header, nav, .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .container-button {
+                min-width: 100%;
+            }
+
+            .sidebar {
+                width: 200px; /* Adjust sidebar width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Seller Dashboard - Welcome back <span id="firstName"></span> <span id="lastName"></span>!</h1>
+        <button class="settings" onclick="toggleSidebar()">⚙️ Settings</button>
+    </header>
+    <nav>
+        <a href="seller_homepage.html">Home</a>
+        <a href="seller_about.html">About</a>
+        <a href="seller_contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="container-buttons">
+            <div class="container-button complete" id="shopInfoButton" onclick="redirectToPage('shop_info.html')">
+                <h2>Shop Information</h2>
+                <p id="shopInfoStatus">Complete ✅</p>
+            </div>
+            <div class="container-button pending" id="businessInfoButton" onclick="redirectToPage('business_info.html')">
+                <h2>Business Information</h2>
+                <p id="businessInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="shippingButton" onclick="handleButtonClick('shippingButton', 'shipping_info.html', checkShippingInfo)">
+                <h2>Shipping Information</h2>
+                <p id="shippingInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="paymentButton" onclick="handleButtonClick('paymentButton', 'payment_info.html', checkPaymentInfo)">
+                <h2>Payment Information</h2>
+                <p id="paymentInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="additionalButton" onclick="handleButtonClick('additionalButton', 'additional_info.html', checkAdditionalInfo)">
+                <h2>Additional Information</h2>
+                <p id="additionalInfoStatus">Pending</p>
+            </div>
+            <div class="container-button pending" id="uploadButton" onclick="redirectToPage('upload_info.html')">
+                <h2>Upload Shoe Details</h2>
+                <p id="uploadInfoStatus">Pending</p>
+            </div>
+        </div>
+    </div>
+    <button id="dashboardButton" class="inactive">Go to Dashboard</button>
+
+    <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
+        <a href="seller_homepage.html">Home</a>
+        <a href="seller_about.html">About</a>
+        <a href="seller_contact.html">Contact</a>
+    </div>
+
+    <div id="overlay" onclick="closeSidebar()"></div>
+
+    <footer>
+        <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
+    </footer>
+
+    <script src="dashboard_script.js"></script>
+    <script>
+        document.getElementById('dashboardButton').addEventListener('click', function () {
+            if (!this.classList.contains('inactive')) {
+                window.location.href = 'seller_dashboard.html';
+            }
+        });
+
+        // Function to check if all sections are complete to activate the Go to Dashboard button
+        function checkAllSections() {
+            let shopInfo = document.getElementById('shopInfoButton').classList.contains('complete');
+            let businessInfo = document.getElementById('businessInfoButton').classList.contains('complete');
+            let shippingInfo = document.getElementById('shippingButton').classList.contains('complete');
+            let paymentInfo = document.getElementById('paymentButton').classList.contains('complete');
+            let additionalInfo = document.getElementById('additionalButton').classList.contains('complete');
+            let uploadInfo = document.getElementById('uploadButton').classList.contains('complete');
+
+            if (shopInfo && businessInfo && shippingInfo && paymentInfo && additionalInfo && uploadInfo) {
+                document.getElementById('dashboardButton').classList.remove('inactive');
+            } else {
+                document.getElementById('dashboardButton').classList.add('inactive');
+            }
+        }
+
+        // Check all sections initially
+        checkAllSections();
+
+        // Example functions for handling button clicks and setting statuses
+        function handleButtonClick(buttonId, pageUrl, callback) {
+            // Simulate some process
+            setTimeout(function () {
+                // Redirect to the page
+                redirectToPage(pageUrl);
+
+                // Example callback function to handle status change
+                if (callback) {
+                    callback(buttonId);
+                }
+            }, 1000); // Simulate delay
+        }
+
+        function redirectToPage(pageUrl) {
+            window.location.href = pageUrl;
+        }
+
+        function checkShopInfo() {
+            document.getElementById('shopInfoButton').classList.add('complete');
+            document.getElementById('shopInfoStatus').innerText = 'Complete ✅';
+            checkAllSections();
+        }
+
+        function checkBusinessInfo() {
+            document.getElementById('businessInfoButton').classList.add('complete');
+            document.getElementById('businessInfoStatus').innerText = 'Complete ✅';
+            checkAllSections();
+        }
+
+        function checkShippingInfo() {
+            document.getElementById('shippingButton').classList.add('complete');
+            document.getElementById('shippingInfoStatus').innerText = 'Complete ✅';
+            checkAllSections();
+        }
+
+        function checkPaymentInfo() {
+            document.getElementById('paymentButton').classList.add('complete');
+            document.getElementById('paymentInfoStatus').innerText = 'Complete ✅';
+            checkAllSections();
+        }
+
+        function checkAdditionalInfo(buttonId) {
+    document.getElementById(buttonId).classList.add('complete');
+    document.getElementById('additionalInfoStatus').innerText = 'Complete ✅';
+    checkAllSections();
+}
+
+// Function to display the current user's name
+function displayUserName() {
+    // Retrieve user information from session storage or local storage
+    let firstName = sessionStorage.getItem('firstName');
+    let lastName = sessionStorage.getItem('lastName');
+
+    // Display the first and last name in the header
+    document.getElementById('firstName').innerText = firstName;
+    document.getElementById('lastName').innerText = lastName;
+}
+
+// Call the displayUserName function to display the user's name
+displayUserName();
+
+</script>
+</body>
+</html>
