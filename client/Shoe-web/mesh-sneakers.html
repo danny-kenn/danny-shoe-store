@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesh Sneakers</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            background-image: url('https://source.unsplash.com/random/1600x900'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 0;
+            border-bottom: 2px solid #ffcc00;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Search Section */
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .search-input {
+            width: 60%;
+            padding: 12px;
+            border: none;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            margin-right: 0;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        .search-button {
+            padding: 12px 20px;
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+        .search-button:hover {
+            background-color: #ffdb4d;
+        }
+
+        /* Shoe Image Container */
+        .shoe-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+        .shoe-img-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .shoe-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+            transition: transform 0.3s ease;
+        }
+        .shoe-img-container:hover .shoe-img {
+            transform: scale(1.05);
+        }
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        .shoe-img-container:hover .overlay {
+            opacity: 1;
+        }
+        .overlay h3, .overlay p {
+            margin: 5px 0;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mesh Sneakers</h1>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+        <button id="searchButton" class="search-button">Search</button>
+    </div>
+
+    <div class="container">
+        <!-- Shoe Image Containers -->
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/boys shoes/Stelatoes.jpeg" alt="Stelatoes" class="shoe-img">
+                <div class="overlay">
+                    <h3>Stelatoes</h3>
+                    <p>Sh 999</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/boys shoes/Mesh sneakers/babys sports wear.jpeg" alt="Baby Sports Wear" class="shoe-img">
+                <div class="overlay">
+                    <h3>Black Baby Sports Wear</h3>
+                    <p>Sh 499</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/boys shoes/Mesh sneakers/Kids air force white-grey.jpeg" alt="Kids Air Force" class="shoe-img">
+                <div class="overlay">
+                    <h3>Kids Air Force White-Grey</h3>
+                    <p>Sh 1599</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/boys shoes/Mesh sneakers/Causal comfy sports.jpeg" alt="Causal Comfy Sports" class="shoe-img">
+                <div class="overlay">
+                    <h3>Casual Comfy Sports</h3>
+                    <p>Sh 1019</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/boys shoes/Mesh sneakers/breathable kids sneakers black.jpeg" alt="Breathable Kids Sneakers Black" class="shoe-img">
+                <div class="overlay">
+                    <h3>Breathable Kids Sneakers Black</h3>
+                    <p>Sh 799</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/girls shoes/Non-slip sneakers.png" alt="Non-slip Sneakers" class="shoe-img">
+                <div class="overlay">
+                    <h3>Non-slip Sneakers</h3>
+                    <p>Sh 499</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/girls shoes/2X sport shoes.jpeg" alt="2X Sport Shoes" class="shoe-img">
+                <div class="overlay">
+                    <h3>2X Sport Shoes</h3>
+                    <p>Sh 1599</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/girls shoes/Toddler sports wear.jpeg" alt="Toddler Sports Wear" class="shoe-img">
+                <div class="overlay">
+                    <h3>Toddler Sports Wear</h3>
+                    <p>Sh 1599</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Mesh Sneakers. All rights reserved.</p>
+    </div>
+
+    <script>
+        // JavaScript for search functionality
+        document.getElementById("searchButton").addEventListener("click", function() {
+            filterShoes();
+        });
+
+        document.getElementById("searchInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                filterShoes();
+            }
+        });
+        function filterShoes() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var shoes = document.querySelectorAll(".shoe-img-container");
+
+            shoes.forEach(function(shoe) {
+                var shoeName = shoe.querySelector("h3").innerText.toLowerCase();
+                if (shoeName.includes(input)) {
+                    shoe.style.display = "block";
+                } else {
+                    shoe.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

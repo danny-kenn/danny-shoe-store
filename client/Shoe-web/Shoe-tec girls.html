@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Shoes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+        }
+        h1 {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 0; /* Remove default margin */
+            border-bottom: 2px solid #ffcc00; /* Yellow border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+    
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            text-align: center;
+            background-color:powderblue; /* Light pink background color */
+            border-radius: 10px; /* Container border radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Container shadow */
+            padding: 20px;
+        }
+        .shoe-img-container {
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .shoe-img {
+            width: 300px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .shoe-img:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+        .overlay {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 3px 10px;
+            border-radius: 5px; /* Reduced roundness */
+        }
+        .overlay h3, .overlay p {
+            margin: 0;
+            color: white;
+            font-size: 12px;
+        }
+        .button-container {
+            margin-top: 20px; /* Space between image and buttons */
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            margin: 0 10px; /* Adjust button margin */
+            padding: 15px 30px;
+            background-color: purple; /* purple background color */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: darkmagenta; /* Darker orange on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Girls Shoes</h1>
+    <div class="container">
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Kids/girls shoes/Rindas.webp" class="shoe-img">
+                <div class="overlay">
+                    <h3>Sneakers</h3>
+                </div>
+            </a>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='/Shoe-web/Mens.html'" class="button">Mesh sneakers</button>
+            <button onclick="window.location.href='/Shoe-web/ladies-shoes.html'" class="button">School shoes</button>
+        </div>
+    </div>
+</body>
+</html>

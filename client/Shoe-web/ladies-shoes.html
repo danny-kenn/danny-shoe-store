@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ladies Shoes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+            background-image: url('https://source.unsplash.com/random/1600x900');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Fixed background */
+        }
+        .header {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #ffcc00; /* Yellow border */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        h1 {
+            margin-top: 0; /* Remove default margin */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Container background color */
+            border-radius: 10px; /* Container border radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Container shadow */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .shoe-img-container {
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .shoe-img {
+            width: 300px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .shoe-img:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+        .overlay {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 3px 10px;
+            border-radius: 5px; /* Reduced roundness */
+        }
+        .overlay h3, .overlay p {
+            margin: 0;
+            color: white;
+            font-size: 12px;
+        }
+        .search-container {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9); /* Light background */
+            border: 2px solid black; /* Black border */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        .search-input {
+            width: 60%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .search-button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green background color */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+        .search-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Ladies Shoes</h1>
+    </div>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+            <button id="searchButton" class="search-button">Search</button>
+        </div>
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Ladies shoes image/Barbie shoe collab" class="shoe-img">
+                <div class="overlay">
+                    <h3>Barbie Shoe Collab</h3>
+                    <p>Sh 999</p>
+                </div>
+            </a>
+        </div>
+        <!-- Add more shoe images and overlays here -->
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Ladies shoes image/ladies 1.jpeg" alt="Ladies Shoes" class="shoe-img">
+                <div class="overlay">
+                    <h3>Ladies Shoes</h3>
+                    <p>Sh 1099</p>
+                </div>
+            </a>
+        </div>
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Ladies shoes image/Chic.jpeg" alt="Chic Shoes" class="shoe-img">
+                <div class="overlay">
+                    <h3>Chic Shoes</h3>
+                    <p>Sh 999</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="shoe-img-container">
+            <a href="/Shoe-web/Payment method.html">
+                <img src="/Ladies shoes image/ladies 2.jpeg" alt="Ladies Shoes" class="shoe-img">
+                <div class="overlay">
+                    <h3>Ladies Shoes</h3>
+                    <p>Sh 1599</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script>
+        // JavaScript for search functionality
+        document.getElementById("searchButton").addEventListener("click", function() {
+            filterShoes();
+        });
+
+        document.getElementById("searchInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                filterShoes();
+            }
+        });
+
+        function filterShoes() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var shoes = document.querySelectorAll(".shoe-img-container");
+
+            shoes.forEach(function(shoe) {
+                var shoeName = shoe.querySelector("h3").innerText.toLowerCase();
+                if (shoeName.includes(input)) {
+                    shoe.style.display = "block";
+                } else {
+                    shoe.style.display = "none";
+                }
+            });
+        }
+
+        // JavaScript for changing background image every 10 seconds
+        var backgroundImages = [
+            'https://source.unsplash.com/random/1600x900',
+            'https://source.unsplash.com/collection/190727/1600x900',
+            'https://source.unsplash.com/1600x900/?fashion'
+        ];
+        var currentIndex = 0;
+        var bgImage = document.body.style;
+        setInterval(function() {
+            currentIndex = (currentIndex + 1) % backgroundImages.length;
+            bgImage.backgroundImage = 'url("' + backgroundImages[currentIndex] + '")';
+        }, 10000); // Change every 10 seconds
+    </script>
+</body>
+</html>
