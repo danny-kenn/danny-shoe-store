@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Method</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            max-width: 90%;
+        }
+        .container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .payment-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .payment-option:last-child {
+            margin-bottom: 0;
+        }
+        .payment-option:hover {
+            transform: scale(1.05);
+        }
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+        .payment-option label {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #555;
+        }
+        .payment-option .icon {
+            font-size: 28px;
+            color: #007bff;
+        }
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+        }
+        .payment-details label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        .payment-details input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .show-pin-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .show-pin-checkbox label {
+            margin-left: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .mpesa-pin-container {
+    position: relative;
+}
+
+.mpesa-pin-container {
+    position: relative;
+}
+
+#mpesa_pin {
+    padding-right: 35px; /* Make space for the eye icon */
+}
+
+.show-pin {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#eye-icon-hidden {
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Payment Method</h1>
+        <form action="#" method="post" class="payment-form" onsubmit="proceedToPayment(event)">
+            <div class="payment-method">
+                <div class="payment-option">
+                    <input type="radio" id="mpesa" name="payment_method" value="mpesa">
+                    <label for="mpesa">
+                        <i class="fab fa-mpesa icon"></i> M-Pesa
+                    </label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="credit_card" name="payment_method" value="credit_card">
+                    <label for="credit_card">
+                        <i class="far fa-credit-card icon"></i> Credit Card
+                    </label>
+                </div>
+            </div>
+            <div class="payment-details" id="mpesa_details">
+                <label for="mpesa_phone">M-Pesa Phone Number:</label>
+                <input type="text" id="mpesa_phone" name="mpesa_phone" placeholder="Enter your M-Pesa phone number">
+                <label for="mpesa_pin">M-Pesa PIN:</label>
+                <div class="mpesa-pin-container">
+                    <input type="password" id="mpesa_pin" name="mpesa_pin" placeholder="Enter your M-Pesa PIN">
+                    <span class="show-pin" onclick="toggleMpesaPinVisibility()">
+                        <i class="fas fa-eye-slash" id="eye-icon-visible"></i>
+                        <i class="fas fa-eye" id="eye-icon-hidden"></i>
+                    </span>
+                </div>
+                
+                
+            </div>
+            <div class="payment-details" id="credit_card_details">
+                <label for="card_number">Card Number:</label>
+                <input type="text" id="card_number" name="card_number" placeholder="Enter your card number">
+                <label for="cardholder_name">Cardholder Name:</label>
+                <input type="text" id="cardholder_name" name="cardholder_name" placeholder="Enter cardholder's name">
+                <label for="card_expiry">Expiry Date:</label>
+                <input type="text" id="card_expiry" name="card_expiry" placeholder="MM/YY">
+                <label for="card_cvv">CVV:</label>
+                <input type="text" id="card_cvv" name="card_cvv" placeholder="Enter CVV">
+                <label for="billing_address">Billing Address:</label>
+                <textarea id="billing_address" name="billing_address" placeholder="Enter billing address"></textarea>
+            </div>
+            <input type="submit" class="submit-btn" value="Proceed to Payment">
+        </form>
+    </div>
+
+    <script>
+        function proceedToPayment(event) {
+            event.preventDefault(); // Prevent form submission for demonstration purposes
+            // You would typically perform form validation here before proceeding to payment
+            alert('Payment failed please try again later.');
+            // Uncomment the next line to actually submit the form
+            // event.target.submit();
+        }
+
+        function toggleMpesaPinVisibility() {
+    const mpesaPinInput = document.getElementById('mpesa_pin');
+    const eyeIconVisible = document.getElementById('eye-icon-visible');
+    const eyeIconHidden = document.getElementById('eye-icon-hidden');
+
+    if (mpesaPinInput.type === 'password') {
+        mpesaPinInput.type = 'text';
+        eyeIconVisible.style.display = 'none';
+        eyeIconHidden.style.display = 'inline';
+    } else {
+        mpesaPinInput.type = 'password';
+        eyeIconVisible.style.display = 'inline';
+        eyeIconHidden.style.display = 'none';
+    }
+}
+
+
+        const mpesaRadio = document.getElementById('mpesa');
+        const creditCardRadio = document.getElementById('credit_card');
+        const mpesaDetails = document.getElementById('mpesa_details');
+        const creditCardDetails = document.getElementById('credit_card_details');
+
+        mpesaRadio.addEventListener('change', function() {
+            if (mpesaRadio.checked) {
+                mpesaDetails.style.display = 'block';
+                creditCardDetails.style.display = 'none';
+            }
+        });
+
+        creditCardRadio.addEventListener('change', function() {
+            if (creditCardRadio.checked) {
+                mpesaDetails.style.display = 'none';
+                creditCardDetails.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
