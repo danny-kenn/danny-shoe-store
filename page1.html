@@ -1,0 +1,21 @@
+<!-- page1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page 1</title>
+</head>
+<body>
+  <h1>Page 1</h1>
+  <button id="goToPage2">Go to Page 2</button>
+
+  <script>
+    document.getElementById('goToPage2').addEventListener('click', function() {
+      const name = 'John';
+      const age = 30;
+      window.location.href = `page2.html?name=${name}&age=${age}`;
+    });
+  </script>
+</body>
+</html>

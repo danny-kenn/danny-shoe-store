@@ -1,0 +1,21 @@
+<!-- page2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page 2</title>
+</head>
+<body>
+  <h1>Page 2</h1>
+  <p id="displayUserID">Loading...</p>
+
+  <script>
+    // Retrieve the user ID from local storage
+    const userID = localStorage.getItem('userID');
+
+    // Display the user ID on the page
+    document.getElementById('displayUserID').textContent = `User ID: ${userID}`;
+  </script>
+</body>
+</html>
