@@ -44,104 +44,73 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
+            padding: 0 20px;
         }
-        .container::before {
-            content: "";
-            background-image: url('Shoe-web/mileview-img3.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-        }
-
-        /* Sign-In Form */
         .signin-section {
-            padding: 80px 20px;
-            text-align: center;
+            background: #fff;
+            padding: 40px;
             border-radius: 10px;
-            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .signin-section h2 {
-            font-size: 3em;
             margin-bottom: 20px;
+            font-size: 2em;
             color: #333;
-            animation: fadeIn 1s ease-in-out;
         }
         .signin-section p {
+            margin-bottom: 20px;
             font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 40px;
             color: #666;
-            animation: fadeIn 1.5s ease-in-out;
         }
         .signin-form {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: left;
-            animation: fadeIn 2s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
         .signin-form label {
-            display: block;
-            font-size: 1.2em;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            font-size: 1em;
+            color: #333;
         }
         .signin-form input {
-            width: 100%;
-            padding: 10px;
             margin-bottom: 20px;
-            font-size: 1em;
-            border: 1px solid #ccc;
+            padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 1em;
         }
         .signin-form button {
-            padding: 15px 30px;
-            background: linear-gradient(to right, #ff6a00, #ee0979);
-            color: #fff;
+            padding: 10px 20px;
             border: none;
-            border-radius: 30px;
+            border-radius: 5px;
+            background-color: #ff6a00;
+            color: #fff;
+            font-size: 1.2em;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
         .signin-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            background-color: #ee0979;
         }
-        .signin-form button:active {
-            transform: translateY(1px);
-            box-shadow: none;
+        .register {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #333;
         }
-
-        /* Footer */
+        .register a {
+            color: #ff6a00;
+            text-decoration: none;
+        }
+        .register a:hover {
+            text-decoration: underline;
+        }
         footer {
+            text-align: center;
+            padding: 20px;
             background-color: #333;
             color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 30px;
-            border-radius: 0 0 10px 10px;
-        }
-
-        /* Keyframes for animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -156,14 +125,17 @@
     </nav>
     <div class="container">
         <section class="signin-section">
-            <h2>Sign In to Your Account</h2>
-            <p>Please enter your User ID and Password to sign in.</p>
+            <h2>Sign In to Your Seller Account</h2>
+            <p>Enter your email and password to access your account.</p>
             <form class="signin-form" id="signin-form">
-                <label for="userId">User ID</label>
-                <input type="text" id="userId" name="userId" required>
-                <label for="password">Password</label>
+                <label for="userId">userID:</label>
+                <input type="userId" id="userId" name="email" required>
+                
+                <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
+                
                 <button type="submit">Sign In</button>
+                <p class="register">Don't have an account? <a href="seller_registration.html">Register here</a></p>
             </form>
         </section>
     </div>
@@ -171,7 +143,7 @@
         <p>&copy; 2024 Comrade-Shoes. All rights reserved.</p>
     </footer>
 
-    <script>
+    <script type="text/javascript">
         document.getElementById('signin-form').addEventListener('submit', function(event) {
             event.preventDefault();
             
@@ -195,6 +167,7 @@
                 alert('Invalid User ID or Password. Please try again.');
             }
         });
+    
     </script>
 </body>
 </html>
