@@ -18,7 +18,7 @@ function deleteAccount() {
 
         alert("Account deleted successfully!");
         // Redirect to the login page or another appropriate page
-        window.location.href = "Index.html";
+        window.location.href = "../index.html";
         return false; // Prevent form submission
     } else {
         displayErrorMessage("Username or password incorrect. Account deletion failed.");

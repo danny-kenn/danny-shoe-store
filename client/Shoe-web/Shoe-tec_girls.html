@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boys Shoes</title>
+    <title>Girls Shoes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,39 +25,10 @@
             max-width: 1000px;
             margin: 50px auto;
             text-align: center;
-            background-color: #6495ED; /* Blue background color */
+            background-color:powderblue; /* Light pink background color */
             border-radius: 10px; /* Container border radius */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Container shadow */
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .search-container {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-        .search-input {
-            width: 60%;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            margin-right: 10px;
-            font-size: 16px;
-        }
-        .search-button {
-            padding: 10px 20px;
-            background-color: #4CAF50; /* Green background color */
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 16px;
-        }
-        .search-button:hover {
-            background-color: #45a049; /* Darker green on hover */
         }
         .shoe-img-container {
             position: relative;
@@ -88,13 +59,14 @@
             font-size: 12px;
         }
         .button-container {
-            width: 100%;
-            text-align: center;
+            margin-top: 20px; /* Space between image and buttons */
+            display: flex;
+            justify-content: center;
         }
         .button {
-            margin: 10px;
+            margin: 0 10px; /* Adjust button margin */
             padding: 15px 30px;
-            background-color: green; /* Blue background color */
+            background-color: purple; /* purple background color */
             color: #fff;
             border: none;
             border-radius: 8px;
@@ -104,28 +76,24 @@
             font-weight: bold;
         }
         .button:hover {
-            background-color:darkgreen; /* Darker green on hover */
+            background-color: darkmagenta; /* Darker orange on hover */
         }
     </style>
 </head>
 <body>
-    <h1>Boys Shoes</h1>
+    <h1>Girls Shoes</h1>
     <div class="container">
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search...">
-            <button class="search-button">Search</button>
-        </div>
         <div class="shoe-img-container">
             <a href="/Shoe-web/Payment method.html">
-                <img src="/Kids/boys shoes/Stelatoes.jpeg" class="shoe-img">
+                <img src="../Kids/girls shoes/Rindas.webp" class="shoe-img">
                 <div class="overlay">
-                    <h3>Stelatoes Shoes</h3>
+                    <h3>Sneakers</h3>
                 </div>
             </a>
         </div>
         <div class="button-container">
-            <button onclick="window.location.href='/Shoe-web/mesh-sneakers.html'" class="button">Mesh sneakers</button>
-            <button onclick="window.location.href='/Shoe-web/boys school shoes.html'" class="button">School shoes</button>
+            <button onclick="window.location.href='../Shoe-web/Mens.html'" class="button">Mesh sneakers</button>
+            <button onclick="window.location.href='../Shoe-web/ladies-shoes.html'" class="button">School shoes</button>
         </div>
     </div>
 </body>
